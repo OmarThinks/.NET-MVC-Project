@@ -7,7 +7,7 @@ A simple project usnig ASP.NET MVC
 
 ## Models:
 
-There is only one model: the **`Post`** Model.
+A **`Post`** Model.
 
 
 
