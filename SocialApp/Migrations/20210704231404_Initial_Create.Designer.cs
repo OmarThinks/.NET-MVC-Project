@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace SocialApp.Migrations
 {
     [DbContext(typeof(SocialAppContext))]
-    partial class SocialAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210704231404_Initial_Create")]
+    partial class Initial_Create
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,6 +216,9 @@ namespace SocialApp.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")

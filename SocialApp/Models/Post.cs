@@ -12,6 +12,5 @@ namespace RazorPagesMovie.Models
         [DataType(DataType.Date)]
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
-        public string Description { get; set; }
     }
 }
