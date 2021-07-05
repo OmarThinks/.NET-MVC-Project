@@ -14,7 +14,6 @@ namespace RazorPagesMovie.Models
         public int ID { get; set; }
         public string Content { get; set; }
 
-    	[InverseProperty("Post")]
     	public List<Comment> Comments { get; set; }
 
     }
