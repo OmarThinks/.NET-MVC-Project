@@ -4,8 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using RazorPagesMovie.Models;
 using System.Collections.Generic;
 using System.Linq;
-
-
+using Fluent.Infrastructure.FluentModel;
 
 namespace RazorPagesMovie.Models
 {
@@ -15,6 +14,12 @@ namespace RazorPagesMovie.Models
         public string Content { get; set; }
 
     	public List<Comment> Comments { get; set; }
+
+    	[Key]
+        public string UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
 
     }
 }
