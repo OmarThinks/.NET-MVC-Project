@@ -12,6 +12,8 @@ using SocialApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialApp.Models;
+
 
 namespace SocialApp
 {
@@ -32,10 +34,19 @@ namespace SocialApp
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(
+                options => 
+                    {
+                        options.Password.RequireDigit = false;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequireUppercase = false;
+                        options.Password.RequiredLength = 6;
+                        options.Password.RequiredUniqueChars = 0;
+                        options.SignIn.RequireConfirmedEmail = false;                    
+                    })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
