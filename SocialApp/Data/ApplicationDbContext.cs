@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -18,5 +18,7 @@ namespace SocialApp.Data
 	    {
 	        base.OnModelCreating(builder);
 	    }
+        public DbSet<SocialApp.Models.Post> Post { get; set; }
+        public DbSet<SocialApp.Models.Comment> Comment { get; set; }
     }
 }

@@ -5,6 +5,7 @@ namespace SocialApp.Models
 {
     public class Post
     {
+        public int ID { get; set; }
         public string Content { get; set; }
 
         //public int AuthorId { get; set; }
@@ -14,5 +15,5 @@ namespace SocialApp.Models
 
 
 /*
-dotnet-aspnet-codegenerator controller -name PostsController -m Post --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet-aspnet-codegenerator controller -name PostsController -m Post --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -dc SocialApp.Data.ApplicationDbContext
 */
