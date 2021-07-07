@@ -8,8 +8,8 @@ namespace SocialApp.Models
         public int ID { get; set; }
         public string Content { get; set; }
 
-        //public int AuthorId { get; set; }
-    	//public ApplicationUser Author { get; set; }
+        public int AuthorId { get; set; }
+    	public ApplicationUser Author { get; set; }
     }
 }
 
