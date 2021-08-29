@@ -14,5 +14,6 @@ namespace SocialApp.Data
         {
         }
         public DbSet<SocialApp.Models.Post> Post { get; set; }
+        public DbSet<SocialApp.Models.Comment> Comment { get; set; }
     }
 }
