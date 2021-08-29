@@ -13,7 +13,7 @@ namespace SocialApp.Models
 
 /*
 
-dotnet new webapp --output "src" --name "SocialApp" --auth Individual
+dotnet new mvc --output "src" --name "SocialApp" --auth Individual
 
 
 

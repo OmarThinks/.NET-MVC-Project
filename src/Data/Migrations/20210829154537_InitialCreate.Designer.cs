@@ -9,8 +9,8 @@ using SocialApp.Data;
 namespace SocialApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210829140430_AddPostContent")]
-    partial class AddPostContent
+    [Migration("20210829154537_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

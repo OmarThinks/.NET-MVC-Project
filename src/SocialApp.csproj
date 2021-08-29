@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-SocialApp-2FFB67E8-9461-4E9C-929F-5E078168ADA5</UserSecretsId>
+    <UserSecretsId>aspnet-SocialApp-CB3E14E9-68BB-41EE-9558-BBC86EE9EFA8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
