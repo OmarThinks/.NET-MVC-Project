@@ -33,7 +33,7 @@ namespace Application.Controllers
             }
 
             var post = await _context.Post
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PostId == id);
             if (post == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Content")] Post post)
+        public async Task<IActionResult> Create([Bind("PostId,Content")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("PostId,Content")] Post post)
         {
-            if (id != post.Id)
+            if (id != post.PostId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace Application.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostExists(post.Id))
+                    if (!PostExists(post.PostId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace Application.Controllers
             }
 
             var post = await _context.Post
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PostId == id);
             if (post == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace Application.Controllers
 
         private bool PostExists(int id)
         {
-            return _context.Post.Any(e => e.Id == id);
+            return _context.Post.Any(e => e.PostId == id);
         }
     }
 }

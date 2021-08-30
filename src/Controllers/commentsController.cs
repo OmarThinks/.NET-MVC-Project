@@ -21,7 +21,8 @@ namespace Application.Controllers
         // GET: comments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Comment.ToListAsync());
+            var mainDbContext = _context.Comment.Include(c => c.Post);
+            return View(await mainDbContext.ToListAsync());
         }
 
         // GET: comments/Details/5
@@ -33,7 +34,8 @@ namespace Application.Controllers
             }
 
             var comment = await _context.Comment
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(c => c.Post)
+                .FirstOrDefaultAsync(m => m.CommentId == id);
             if (comment == null)
             {
                 return NotFound();
@@ -45,6 +47,7 @@ namespace Application.Controllers
         // GET: comments/Create
         public IActionResult Create()
         {
+            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Content")] Comment comment)
+        public async Task<IActionResult> Create([Bind("CommentId,Content,PostId")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 
@@ -77,6 +81,7 @@ namespace Application.Controllers
             {
                 return NotFound();
             }
+            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 
@@ -85,9 +90,9 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId")] Comment comment)
         {
-            if (id != comment.Id)
+            if (id != comment.CommentId)
             {
                 return NotFound();
             }
@@ -101,7 +106,7 @@ namespace Application.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentExists(comment.Id))
+                    if (!CommentExists(comment.CommentId))
                     {
                         return NotFound();
                     }
@@ -112,6 +117,7 @@ namespace Application.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 
@@ -124,7 +130,8 @@ namespace Application.Controllers
             }
 
             var comment = await _context.Comment
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(c => c.Post)
+                .FirstOrDefaultAsync(m => m.CommentId == id);
             if (comment == null)
             {
                 return NotFound();
@@ -146,7 +153,7 @@ namespace Application.Controllers
 
         private bool CommentExists(int id)
         {
-            return _context.Comment.Any(e => e.Id == id);
+            return _context.Comment.Any(e => e.CommentId == id);
         }
     }
 }

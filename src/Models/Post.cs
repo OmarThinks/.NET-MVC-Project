@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace Application.Models
 {
     public class Post
     {
-        public int Id { get; set; }
+        public int PostId { get; set; }
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; }
