@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace SocialApp.Models
 {
@@ -7,6 +8,8 @@ namespace SocialApp.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
+
+    	public List<Comment> Comments { get; set; }        
     }
 }
 
