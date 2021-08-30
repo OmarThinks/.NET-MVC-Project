@@ -7,6 +7,10 @@ namespace Application.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
+
+        public int PostId { get; set; }
+        public Post Post { get; set; }
+
     }
 }
 
@@ -19,6 +23,9 @@ dotnet aspnet-codegenerator controller --controllerName commentsController -outD
 dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext MainDbContext -udl -scripts --force
 
 
+dotnet ef migrations add <migration name>
+dotnet ef migrations list
+dotnet ef database update
 
 
  

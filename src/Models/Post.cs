@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.Models
@@ -7,6 +8,9 @@ namespace Application.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
+
+        public List<Comment> Comments { get; set; }
+
     }
 }
 
