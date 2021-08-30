@@ -21,6 +21,7 @@ dotnet new mvc --output "src" --name "SocialApp" --auth Individual
 
 
 dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext SocialApp.Data.ApplicationDbContext -udl -scripts
+dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext SocialApp.Data.ApplicationDbContext -udl -scripts -f
 
 
 dotnet ef migrations add CreatedCommentModel
