@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SocialApp.Data;
-using SocialApp.Models;
+using Application.Models;
 
-namespace SocialApp.Controllers
+namespace Application.Controllers
 {
     public class postsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly MainDbContext _context;
 
-        public postsController(ApplicationDbContext context)
+        public postsController(MainDbContext context)
         {
             _context = context;
         }

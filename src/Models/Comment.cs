@@ -1,31 +1,21 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SocialApp.Models
+namespace Application.Models
 {
     public class Comment
     {
         public int Id { get; set; }
         public string Content { get; set; }
-
-    	public int PostId { get; set; }
-    	public Post Post { get; set; }
     }
 }
 
 
 /*
-
-dotnet new mvc --output "src" --name "SocialApp" --auth Individual
-
+ dotnet new mvc --output "src" --name "Application"
 
 
-dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext SocialApp.Data.ApplicationDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext SocialApp.Data.ApplicationDbContext -udl -scripts -f
 
-
-dotnet ef migrations add CreatedCommentModel
-dotnet ef migrations list
-dotnet ef database update
-
-*/
+ 
+ 
+ */

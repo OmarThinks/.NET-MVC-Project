@@ -1,6 +1,6 @@
 using System;
 
-namespace SocialApp.Models
+namespace Application.Models
 {
     public class ErrorViewModel
     {

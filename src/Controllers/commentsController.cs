@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SocialApp.Data;
-using SocialApp.Models;
+using Application.Models;
 
-namespace SocialApp.Controllers
+namespace Application.Controllers
 {
     public class commentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly MainDbContext _context;
 
-        public commentsController(ApplicationDbContext context)
+        public commentsController(MainDbContext context)
         {
             _context = context;
         }
@@ -22,8 +21,7 @@ namespace SocialApp.Controllers
         // GET: comments
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Comment.Include(c => c.Post);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Comment.ToListAsync());
         }
 
         // GET: comments/Details/5
@@ -35,7 +33,6 @@ namespace SocialApp.Controllers
             }
 
             var comment = await _context.Comment
-                .Include(c => c.Post)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comment == null)
             {
@@ -48,7 +45,6 @@ namespace SocialApp.Controllers
         // GET: comments/Create
         public IActionResult Create()
         {
-            ViewData["PostId"] = new SelectList(_context.Post, "Id", "Id");
             return View();
         }
 
@@ -57,7 +53,7 @@ namespace SocialApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Content,PostId")] Comment comment)
+        public async Task<IActionResult> Create([Bind("Id,Content")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +61,6 @@ namespace SocialApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "Id", "Id", comment.PostId);
             return View(comment);
         }
 
@@ -82,7 +77,6 @@ namespace SocialApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "Id", "Id", comment.PostId);
             return View(comment);
         }
 
@@ -91,7 +85,7 @@ namespace SocialApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content,PostId")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Content")] Comment comment)
         {
             if (id != comment.Id)
             {
@@ -118,7 +112,6 @@ namespace SocialApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "Id", "Id", comment.PostId);
             return View(comment);
         }
 
@@ -131,7 +124,6 @@ namespace SocialApp.Controllers
             }
 
             var comment = await _context.Comment
-                .Include(c => c.Post)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comment == null)
             {
