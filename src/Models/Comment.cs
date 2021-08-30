@@ -15,6 +15,11 @@ namespace Application.Models
  dotnet new mvc --output "src" --name "Application"
 
 
+dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext MainDbContext -udl -scripts
+dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext MainDbContext -udl -scripts --force
+
+
+
 
  
  
