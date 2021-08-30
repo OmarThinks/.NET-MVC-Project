@@ -20,8 +20,8 @@ namespace Application.Models
  dotnet new mvc --output "src" --name "Application"
 
 
-dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext MainDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext MainDbContext -udl -scripts --force
+dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts
+dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts --force
 
  
  */

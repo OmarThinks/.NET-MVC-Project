@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Application.Data;
 using Application.Models;
 
 namespace Application.Controllers
 {
     public class commentsController : Controller
     {
-        private readonly MainDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public commentsController(MainDbContext context)
+        public commentsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -21,8 +22,8 @@ namespace Application.Controllers
         // GET: comments
         public async Task<IActionResult> Index()
         {
-            var mainDbContext = _context.Comment.Include(c => c.Post);
-            return View(await mainDbContext.ToListAsync());
+            var applicationDbContext = _context.Comment.Include(c => c.Post);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: comments/Details/5
@@ -47,7 +48,7 @@ namespace Application.Controllers
         // GET: comments/Create
         public IActionResult Create()
         {
-            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId");
+            ViewData["PostId"] = new SelectList(_context.Set<Post>(), "PostId", "PostId");
             return View();
         }
 
@@ -64,7 +65,7 @@ namespace Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
+            ViewData["PostId"] = new SelectList(_context.Set<Post>(), "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 
@@ -81,7 +82,7 @@ namespace Application.Controllers
             {
                 return NotFound();
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
+            ViewData["PostId"] = new SelectList(_context.Set<Post>(), "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 
@@ -117,7 +118,7 @@ namespace Application.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PostId"] = new SelectList(_context.Post, "PostId", "PostId", comment.PostId);
+            ViewData["PostId"] = new SelectList(_context.Set<Post>(), "PostId", "PostId", comment.PostId);
             return View(comment);
         }
 

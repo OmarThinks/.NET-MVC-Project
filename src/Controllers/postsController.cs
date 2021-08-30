@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Application.Data;
 using Application.Models;
 
 namespace Application.Controllers
 {
     public class postsController : Controller
     {
-        private readonly MainDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public postsController(MainDbContext context)
+        public postsController(ApplicationDbContext context)
         {
             _context = context;
         }

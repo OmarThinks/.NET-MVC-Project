@@ -20,8 +20,13 @@ namespace Application.Models
  dotnet new mvc --output "src" --name "Application"
 
 
-dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext MainDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext MainDbContext -udl -scripts --force
+
+dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext Application.Data.ApplicationDbContext -udl -scripts
+dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext Application.Data.ApplicationDbContext -udl -scripts --force
+
+
+
+
 
 
 dotnet ef migrations add <migration name>
