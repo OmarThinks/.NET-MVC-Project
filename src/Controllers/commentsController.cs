@@ -21,10 +21,19 @@ namespace Application.Controllers
         }
 
         // GET: comments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Comment.Include(c => c.Post);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Comment.Include(c => c.Post);
+            //return View(await applicationDbContext.ToListAsync());
+            var comments = from c in _context.Comment
+                         select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                comments = comments.Where(c => c.Content.Contains(searchString));
+            }
+
+            return View(await comments.ToListAsync());
         }
 
         // GET: comments/Details/5
