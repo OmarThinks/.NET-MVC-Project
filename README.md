@@ -57,14 +57,26 @@ The AuthorId is id of the user Who Created the Comment.
 
 
 # C) Authentication:
+
+## C-1) Relax:
+
+**This is not custom authentication.**  
+It is built in and tested **Identity Authentication**.  
+
+
+## C-2) Not Logged in User:
+
 If the user is not logged in, then he will see **Login** and **Register**
 Buttons.
 
 <img src="images/new_user.gif">
 
 
-**Relax, this is not custom authentication.**  
-It is built in and tested **Identity Auth**.  
+
+
+
+## C-3) Registration:
+
 Now, when clicking the Register button, the user will be taken to the registeration page.
 
 
@@ -73,5 +85,12 @@ Now, when clicking the Register button, the user will be taken to the registerat
 
 
 
+## C-4) Logged In User:
+
+
+Now, that the user is logged in, the navbar will change.
+
+
+<img src="images/logged_in_user.gif">
 
 
