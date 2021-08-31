@@ -1,9 +1,9 @@
 using System;
 using Microsoft.AspNetCore.Identity;
-using SocialApp.Models;
+using Application.Models;
 using System.Collections.Generic;
 
-namespace SocialApp.Models
+namespace Application.Models
 {
     public class ApplicationUser : IdentityUser
     {
