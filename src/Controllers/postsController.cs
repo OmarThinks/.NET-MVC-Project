@@ -80,8 +80,10 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("PostId,Content,AuthorId")] Post post)
         {
-            Console.WriteLine(post);
+            Console.WriteLine(JsonSerializer.Serialize(post));
             ApplicationUser.AuthorHandler(post);
+            Console.WriteLine(JsonSerializer.Serialize(post));
+
             /*if (ModelState.IsValid)
             {
                 _context.Add(post);
