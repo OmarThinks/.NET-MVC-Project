@@ -47,7 +47,6 @@ namespace Application.Controllers
 
         // GET: posts/Create
         [Authorize]
-
         public IActionResult Create()
         {
             return View();
@@ -59,7 +58,6 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-
         public async Task<IActionResult> Create([Bind("PostId,Content")] Post post)
         {
             if (ModelState.IsValid)
@@ -73,7 +71,6 @@ namespace Application.Controllers
 
         // GET: posts/Edit/5
         [Authorize]
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,7 +92,6 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-
         public async Task<IActionResult> Edit(int id, [Bind("PostId,Content")] Post post)
         {
             if (id != post.PostId)
@@ -128,7 +124,6 @@ namespace Application.Controllers
 
         // GET: posts/Delete/5
         [Authorize]
-
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,7 +145,6 @@ namespace Application.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize]
-
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var post = await _context.Post.FindAsync(id);

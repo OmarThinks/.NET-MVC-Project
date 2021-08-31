@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Application.Data;
 using Application.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Application.Controllers
 {
@@ -46,6 +47,7 @@ namespace Application.Controllers
         }
 
         // GET: comments/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["PostId"] = new SelectList(_context.Set<Post>(), "PostId", "PostId");
@@ -57,6 +59,7 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("CommentId,Content,PostId")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace Application.Controllers
         }
 
         // GET: comments/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId")] Comment comment)
         {
             if (id != comment.CommentId)
@@ -123,6 +128,7 @@ namespace Application.Controllers
         }
 
         // GET: comments/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace Application.Controllers
         // POST: comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var comment = await _context.Comment.FindAsync(id);
