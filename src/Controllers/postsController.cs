@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Application.Data;
 using Application.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+
+
+
 
 namespace Application.Controllers
 {
@@ -24,6 +28,10 @@ namespace Application.Controllers
         public async Task<IActionResult> Index(
             string searchString, int? pageNumber)
         {
+
+            Console.WriteLine("Hello World!");
+            Console.WriteLine(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             ViewData["searchString"] = searchString;
             var posts = from p in _context.Post
                          select p;
