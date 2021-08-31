@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Application.Data;
 using Application.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.Text.Json;
 
 namespace Application.Controllers
 {
@@ -71,8 +73,11 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("CommentId,Content,PostId,AuthorId")] Comment comment)
+        public async Task<IActionResult> Create([Bind("CommentId,Content,PostId")] Comment comment)
         {
+            Console.WriteLine(JsonSerializer.Serialize(comment));
+            comment.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            comment.Author = null;
             if (ModelState.IsValid)
             {
                 _context.Add(comment);
@@ -107,7 +112,7 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId,AuthorId")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId")] Comment comment)
         {
             if (id != comment.CommentId)
             {

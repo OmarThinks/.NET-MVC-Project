@@ -78,7 +78,7 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("PostId,Content,AuthorId")] Post post)
+        public async Task<IActionResult> Create([Bind("PostId,Content")] Post post)
         {
             post.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             post.Author = null;
@@ -115,7 +115,7 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("PostId,Content,AuthorId")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("PostId,Content")] Post post)
         {
             if (id != post.PostId)
             {
