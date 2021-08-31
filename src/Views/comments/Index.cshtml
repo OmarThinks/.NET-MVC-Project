@@ -1,4 +1,4 @@
-@model IEnumerable<Application.Models.Comment>
+@model PaginatedList<Application.Models.Comment>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,6 +11,12 @@
 </p>
 
 
+
+
+
+
+
+
 <form asp-controller="comments" asp-action="Index">
     <p>
         Content: <input type="text" name="searchString" />
@@ -20,14 +26,45 @@
 
 
 
+
+
+
+
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-searchString="@ViewData["searchString"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-searchString="@ViewData["searchString"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+
+
+
+
+
+
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Content)
+                Content
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Post)
+                Post
             </th>
             <th></th>
         </tr>
