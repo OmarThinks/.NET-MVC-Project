@@ -55,17 +55,20 @@ The AuthorId is id of the user Who Created the Comment.
 
 
 
-# Home Page:
-<img src="images/home.gif">
+
+# C) Authentication:
+If the user is not logged in, then he will see **Login** and **Register**
+Buttons.
+
+<img src="images/new_user.gif">
 
 
-
-# Posts Page:
-<img src="images/posts.gif">
-
-
+**Relax, this is not custom authentication.**  
+It is built in and tested **Identity Auth**.  
+Now, when clicking the Register button, the user will be taken to the registeration page.
 
 
+<img src="images/register.gif">
 
 
 
