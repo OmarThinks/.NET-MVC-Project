@@ -24,7 +24,7 @@ namespace Application.Controllers
         public async Task<IActionResult> Index(
             string searchString, int? pageNumber)
         {
-
+            ViewData["searchString"] = searchString;
             var posts = from p in _context.Post
                          select p;
 
