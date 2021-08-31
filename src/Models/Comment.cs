@@ -22,7 +22,7 @@ namespace Application.Models
 
 
 dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext Application.Data.ApplicationDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName commentsController -outDir Controllers --model Comment --dataContext Application.Data.ApplicationDbContext -udl -scripts --force
+dotnet aspnet-codegenerator controller --controllerName commentsNewController -outDir Controllers --model Comment --dataContext Application.Data.ApplicationDbContext -udl -scripts
 
 
 

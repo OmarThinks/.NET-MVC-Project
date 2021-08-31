@@ -12,6 +12,9 @@ namespace Application.Models
 
         public List<Comment> Comments { get; set; }
 
+        public int AuthorId { get; set; }
+        public ApplicationUser Author { get; set; }
+
     }
 }
 
@@ -21,7 +24,7 @@ namespace Application.Models
 
 
 dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts --force
+dotnet aspnet-codegenerator controller --controllerName postsNewController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts
 
  
  */
