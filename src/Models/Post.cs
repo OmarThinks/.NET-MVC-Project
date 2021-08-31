@@ -12,7 +12,7 @@ namespace Application.Models
 
         public List<Comment> Comments { get; set; }
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         public ApplicationUser Author { get; set; }
 
     }
