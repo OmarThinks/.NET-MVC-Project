@@ -66,25 +66,31 @@
             <th>
                 Post
             </th>
+            <th>
+                AuthorId
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Post.PostId)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CommentId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.CommentId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CommentId">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CommentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CommentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CommentId">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
