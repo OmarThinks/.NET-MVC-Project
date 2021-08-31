@@ -9,8 +9,8 @@ using Application.Data;
 using Application.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-
-
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 
 namespace Application.Controllers
@@ -80,12 +80,14 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("PostId,Content,AuthorId")] Post post)
         {
-            if (ModelState.IsValid)
+            Console.WriteLine(post);
+            ApplicationUser.AuthorHandler(post);
+            /*if (ModelState.IsValid)
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            }*/
             return View(post);
         }
 

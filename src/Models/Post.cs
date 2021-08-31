@@ -24,7 +24,7 @@ namespace Application.Models
 
 
 dotnet aspnet-codegenerator controller --controllerName postsController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts
-dotnet aspnet-codegenerator controller --controllerName postsNewController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts
+dotnet aspnet-codegenerator controller --controllerName postsNewController -outDir Controllers --model Post --dataContext Application.Data.ApplicationDbContext -udl -scripts --force
 
  
  */
