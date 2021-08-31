@@ -21,9 +21,20 @@ namespace Application.Controllers
         }
 
         // GET: posts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Post.ToListAsync());
+
+            var posts = from p in _context.Post
+                         select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(s => s.Content.Contains(searchString));
+            }
+
+            return View(await posts.ToListAsync());
+
+            //return View(await _context.Post.ToListAsync());
         }
 
         // GET: posts/Details/5
