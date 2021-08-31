@@ -21,7 +21,8 @@ namespace Application.Controllers
         }
 
         // GET: posts
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(
+            string searchString, int? pageNumber)
         {
 
             var posts = from p in _context.Post
@@ -31,10 +32,10 @@ namespace Application.Controllers
             {
                 posts = posts.Where(s => s.Content.Contains(searchString));
             }
+            posts = posts.OrderBy(p => p.PostId);
+            int pageSize = 5;
 
-            return View(await posts.ToListAsync());
-
-            //return View(await _context.Post.ToListAsync());
+            return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: posts/Details/5
