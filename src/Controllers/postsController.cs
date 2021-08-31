@@ -80,16 +80,15 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("PostId,Content,AuthorId")] Post post)
         {
-            Console.WriteLine(JsonSerializer.Serialize(post));
-            ApplicationUser.AuthorHandler(post);
-            Console.WriteLine(JsonSerializer.Serialize(post));
+            post.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            post.Author = null;
 
-            /*if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }*/
+            }
             return View(post);
         }
 
