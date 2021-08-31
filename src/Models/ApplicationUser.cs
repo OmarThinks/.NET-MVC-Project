@@ -19,18 +19,4 @@ namespace Application.Models
     }
     /*            Console.WriteLine(JsonSerializer.Serialize(post));
 */
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
