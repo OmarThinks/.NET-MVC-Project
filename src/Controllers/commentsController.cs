@@ -71,7 +71,7 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("CommentId,Content,PostId")] Comment comment)
+        public async Task<IActionResult> Create([Bind("CommentId,Content,PostId,AuthorId")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId,AuthorId")] Comment comment)
         {
             if (id != comment.CommentId)
             {
