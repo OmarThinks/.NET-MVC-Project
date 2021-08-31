@@ -114,6 +114,8 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("CommentId,Content,PostId")] Comment comment)
         {
+            comment.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            comment.Author = null;
             if (id != comment.CommentId)
             {
                 return NotFound();

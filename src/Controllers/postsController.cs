@@ -117,6 +117,8 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("PostId,Content")] Post post)
         {
+            post.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            post.Author = null;
             if (id != post.PostId)
             {
                 return NotFound();
