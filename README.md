@@ -94,3 +94,34 @@ Now, that the user is logged in, the navbar will change.
 <img src="images/logged_in_user.gif">
 
 
+
+
+## C-5) Logging Out:
+
+
+The **Log Out** button will log you out, if you are logged in.
+
+
+
+<img src="images/logout.gif">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
