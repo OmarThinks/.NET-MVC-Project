@@ -29,8 +29,8 @@ namespace Application.Controllers
             string searchString, int? pageNumber)
         {
 
-            Console.WriteLine("Hello World!");
-            Console.WriteLine(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            //Console.WriteLine("Hello World!");
+            //Console.WriteLine(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             ViewData["searchString"] = searchString;
             var posts = from p in _context.Post

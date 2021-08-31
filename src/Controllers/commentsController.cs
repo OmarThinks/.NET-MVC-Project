@@ -75,7 +75,7 @@ namespace Application.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("CommentId,Content,PostId")] Comment comment)
         {
-            Console.WriteLine(JsonSerializer.Serialize(comment));
+            //Console.WriteLine(JsonSerializer.Serialize(comment));
             comment.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             comment.Author = null;
             if (ModelState.IsValid)
