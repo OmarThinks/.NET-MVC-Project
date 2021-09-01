@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Application.Models
 {
-    public class Comment : Abstraction.HasAuthor
+    public class Comment// : Abstraction.HasAuthor
     {
         public int CommentId { get; set; }
         
@@ -13,6 +13,9 @@ namespace Application.Models
         [Required()]
         public int PostId { get; set; }
         public Post Post { get; set; }
+
+        public string AuthorId { get; set; }
+        public ApplicationUser Author { get; set; }
     }
 }
 

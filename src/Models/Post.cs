@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace Application.Models
 {
-    public class Post : Abstraction.HasAuthor
+    public class Post// : Abstraction.HasAuthor
     {
         public int PostId { get; set; }
         
@@ -15,6 +15,10 @@ namespace Application.Models
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+        public string AuthorId { get; set; }
+        public ApplicationUser Author { get; set; }
+
     }
 }
 
