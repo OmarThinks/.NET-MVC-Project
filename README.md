@@ -117,6 +117,56 @@ Email, password, 2FA and Personal Data.
 
 
 
+# D) Post Model:
+
+
+
+## D-1) Navigate:
+
+
+In the Nav Bar, you can find the **Posts** Link.
+
+<img src="images/navbar_posts.gif">
+
+
+
+## D-2) Posts List:
+
+
+<img src="images/posts_list.gif">
+
+
+
+
+
+
+
+
+
+
+# E) Comments Model:
+
+
+
+## E-1) Navigate:
+
+
+In the Nav Bar, you can find the **Comments** Link.
+
+<img src="images/navbar_comments.gif">
+
+
+
+## E-2) Comments List:
+
+
+<img src="images/comments_list.gif">
+
+
+
+
+
+
 
 
 
