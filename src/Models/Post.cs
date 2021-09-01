@@ -12,6 +12,7 @@ namespace Application.Models
         public int PostId { get; set; }
         
         [Required()]
+        [MinLength(2)]
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; }

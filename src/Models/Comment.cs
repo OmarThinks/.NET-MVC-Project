@@ -8,6 +8,7 @@ namespace Application.Models
         public int CommentId { get; set; }
         
         [Required()]
+        [MinLength(2)]
         public string Content { get; set; }
 
         [Required()]
