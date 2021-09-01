@@ -13,6 +13,7 @@ namespace Application.Models
         
         [Required()]
         [MinLength(2)]
+        [MaxLength(100)]
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; }
