@@ -6,9 +6,11 @@ namespace Application.Models
     public class Comment : Abstraction.HasAuthor
     {
         public int CommentId { get; set; }
-
+        
+        [Required()]
         public string Content { get; set; }
 
+        [Required()]
         public int PostId { get; set; }
         public Post Post { get; set; }
     }
