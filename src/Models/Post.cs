@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+//using System.Web.DynamicData;
+using System.Globalization;
 
 
 namespace Application.Models
@@ -8,6 +10,8 @@ namespace Application.Models
     public class Post : Abstraction.HasAuthor
     {
         public int PostId { get; set; }
+        
+        [Required()]
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; }
