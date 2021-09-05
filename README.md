@@ -141,6 +141,19 @@ In the Nav Bar, you can find the **Posts** Link.
 
 
 
+## D-3) Validation (Using Data Annotations):
+
+Data annotations are used to validate inputs.
+
+<img src="images/validation.gif">
+
+
+
+
+
+
+
+
 
 
 
