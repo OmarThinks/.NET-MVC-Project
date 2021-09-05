@@ -141,13 +141,6 @@ In the Nav Bar, you can find the **Posts** Link.
 
 
 
-## D-3) Validation (Using Data Annotations):
-
-Data annotations are used to validate inputs.
-
-<img src="images/validation.gif">
-
-
 
 
 
@@ -180,6 +173,25 @@ In the Nav Bar, you can find the **Comments** Link.
 
 
 
+
+
+
+
+
+# F) Validation (Using Data Annotations):
+
+Data annotations are used to validate inputs.
+
+<img src="images/validation.gif">
+
+
+
+
+# G) Permissions:
+
+- Non Logged-in users can only view the data
+
+- Logged in users can view, create, update and delete data
 
 
 
